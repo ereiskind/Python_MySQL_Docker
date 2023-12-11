@@ -1,0 +1,6 @@
+mysql
+mysqlclient
+pandas
+PyMySQL
+selenium
+SQLAlchemy
