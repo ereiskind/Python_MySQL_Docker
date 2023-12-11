@@ -27,3 +27,17 @@ How to Create a Program Based Off This Template
 2. All all other non-standard library packages required by the project to "requirements.txt"
 3. Add any passwords the project needs to "src/repo_secrets.py"
 4. Add any other files needed in the project that cannot be committed to its public repository to "src/"
+
+3. Prepare the Python Dockerfile and Docker Compose File
+========================================================
+
+1. In "Dockerfile"
+
+   1. Replace ``<<Python_version>>`` with the Python version being used for the project
+   2. Replace ``<<Git_clone_URL>>`` with the URL for cloning the project repo
+   3. Replace ``<<project_file_name>>`` with the name of the file the project will have in the container
+
+2. In "docker-compose.yaml"
+
+   1. Replace ``<<Python_version>>`` with the Python version being used for the project
+   2. Replace ``<<MySQL_root_password>>`` with the MySQL root password the project will use
