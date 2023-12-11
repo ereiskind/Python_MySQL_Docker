@@ -23,3 +23,4 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN git clone <<Git_clone_URL>> ./root/<<project_file_name>>
 COPY ./src/ ./root/<<project_file_name>>/
+WORKDIR ./root/<<project_file_name>>
