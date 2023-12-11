@@ -1,0 +1,1 @@
+USE `<<schema_name>>`;
