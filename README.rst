@@ -41,3 +41,47 @@ How to Create a Program Based Off This Template
 
    1. Replace ``<<Python_version>>`` with the Python version being used for the project
    2. Replace ``<<MySQL_root_password>>`` with the MySQL root password the project will use
+
+How to Run a Program Based Off This Template
+********************************************
+
+1. Build the Connected Python and MySQL Containers
+==================================================
+
+1. Open the folder of the project using this template in Windows Explorer, then type ``cmd`` in the address bar to open a Command Prompt window
+2. Create the image by typing ``docker compose build`` in the Command Prompt window
+3. Create a detached container from that image by typing ``docker compose up -d`` in the Command Prompt window
+
+2. Access the Program
+=====================
+
+Interact with the Python Program
+--------------------------------
+
+1. Access the Python container by typing ``docker exec -it python-container bash`` in the Command Prompt window
+2. Interact with the program via the CLI
+3. Exit the Python container by typing ``exit`` in the Command Prompt window
+
+Interact with the MySQL CLI
+---------------------------
+
+1. Access the MySQL container by typing ``docker exec -it mysql-container mysql --user=root --password=`` and then the value used for ``<<MySQL_root_password>>`` in the Command Prompt window
+2. Select the usage statistics database by typing ``USE `<<schema_name>>`;`` in the Command Prompt window
+3. Type SQL statements into Command Prompt to run them
+4. Exit the MySQL container by typing ``exit`` in the Command Prompt window
+
+Transfer SQL Data to the Local Machine
+--------------------------------------
+
+1. Access the MySQL container by typing ``docker exec -it mysql-container mysql --user=root --password=`` and then the value used for ``<<MySQL_root_password>>`` in the Command Prompt window
+2. Dump the database contents to a file by typing ``mysqldump -u root -p <<schema_name>> > filename.sql``  where ``<<schema_name>>`` is replaced by the same schema name value used in the DDL and DML files and  ``filename`` is the name the SQL file will have
+3. If prompted for a password, enter the value used for ``<<MySQL_root_password>>`` in the Command Prompt window
+4. Exit the MySQL container by typing ``exit`` in the Command Prompt window
+5. Copy the file from the container to the local machine by typing ``docker container cp mysql-container:/filename.sql .`` where ``filename`` is the name given to the SQL file in the ``mysqldump`` command
+
+3. Destroy Containers and Images for Refreshing
+===============================================
+
+1. Exit out of any containers
+2. Destroy the containers by typing ``docker compose down -v`` in the Command Prompt window
+3. Destroy the images and clear the cache by typing ``docker system prune -a`` in the Command Prompt window
